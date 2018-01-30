@@ -44,7 +44,7 @@ Also make sure your graphics card driver is up to date.
 
 Getting Started
 -------
-If your want to play **Arenzia**, you should go to our [website](https://nbprojekt.github.io/Arenzia)
+If your want to play **Arenzia**, you should go to our [website](https://nbprojekt.github.io/Arenzia), navigate to download and follow the steps.
 
 
 Contributing
