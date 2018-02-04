@@ -30,10 +30,13 @@ import NBprojekt.Arenzia.GameState.GameStateManager;
 import NBprojekt.Arenzia.Main.Crypt;
 import NBprojekt.Arenzia.Main.Game;
 import NBprojekt.Arenzia.Main.GamePanel;
+import NBprojekt.Arenzia.Object.Checkpoint;
 import NBprojekt.Arenzia.Object.Collectable;
 import NBprojekt.Arenzia.Object.Enemy;
 import NBprojekt.Arenzia.Object.Ninja;
 import NBprojekt.Arenzia.Object.Teleport;
+import NBprojekt.Arenzia.Object.Enemies.Bird;
+import NBprojekt.Arenzia.Object.Enemies.Pet;
 import NBprojekt.Arenzia.Object.Enemies.Slime;
 import NBprojekt.Arenzia.Object.Enemies.Water;
 import NBprojekt.Arenzia.TileMap.Background;
@@ -45,13 +48,16 @@ public class Graveyard_01 extends GameState{
 	private Map map;
 	private Background background;
 	private HUD hud;
-	private boolean exit;   
+	private boolean exit;
+	private boolean male = false;
 	
 		// Entities
 	private Ninja ninja; 
 	private ArrayList < Enemy > enemies; 
 	private ArrayList < Collectable > collectable;
-	private Teleport teleport;
+	private ArrayList <Checkpoint> checkPoints;
+ 	private Teleport teleport;
+	private Point spawnPoint;
 
 	public Graveyard_01 (GameStateManager gameStateManager){
 		this.gameStateManager = gameStateManager; 
@@ -72,29 +78,51 @@ public class Graveyard_01 extends GameState{
 		exit = false;
 		 
 			// Player 
-		ninja = new Ninja ( map, false);
-		ninja.setPosition( 600, 500);  
+		spawnPoint = new Point(600, 500);
+		ninja = new Ninja ( map, male);
+		ninja.setPosition(spawnPoint);  
 
 			// HUD  
-		hud = new HUD ( ninja ); 
+		hud = new HUD ( ninja );
+
+		// Load every other entity stuff
+		initEntities();
 		
+		System.out.println(""+ Crypt.randomString(15));
+		HUD.Coin1 = HUD.Coin2 = HUD.Coin3 = HUD.Coin4 = HUD.Coin5 = HUD.Coin6 = true;
+	}
+	private void initEntities(){ 
 			// Enemies
-		enemies  = new ArrayList < Enemy >();
-			// Collectable
+		enemies  = new ArrayList < Enemy >(); 
 		collectable = new ArrayList < Collectable >();
+		checkPoints = new ArrayList < Checkpoint >();
 			// Teleport
 		teleport = new Teleport(map);
-		teleport.setPosition(23900, 698);
+		teleport.setPosition(11060, 2200);
 		 
-		// Place enemies
+		// Set checkpoints 
+		Point [] checks = new Point[]{ 
+			new Point(5009, 520), new Point(15139, 1020)
+		}; 
+		for (int i = 0; i < checks.length; i++) {
+			Checkpoint checkpoint = new Checkpoint(map);
+			checkpoint.setPosition(checks[i].getX(), checks[i].getY());
+			checkPoints.add(checkpoint);
+		} 
+	
 		Point [] slimes = new Point []{
 				new Point(1600,300), new Point(6500,600),
 				new Point(7800,500), new Point(14100,500),
 				new Point(10700,400), new Point(14000,1900),
-				new Point(13000,1900), new Point(9900,2400),
-				new Point(2600,3100), new Point(17800,4000),
-				new Point(10100,4200) 
+				new Point(13000,1900), new Point(10100,4200),
+				new Point(2600,3100), new Point(17800,4000)
 		};
+		Point [] pets = new Point[]{  
+				new Point(7110, 720),  new Point(9900, 2400), 
+				new Point(15171, 1020), new Point(12324, 720),
+				new Point(12721, 1920), new Point(11865, 1920),
+				new Point(5128, 920)
+			}; 
 		Point [] water = new Point []{
 				new Point(3500,1000), new Point(3700,1000),
 				new Point(7900,600), new Point(8000,600),
@@ -107,23 +135,64 @@ public class Graveyard_01 extends GameState{
 				new Point(15400,4200), new Point(15500,4200),
 				new Point(15600,4200), new Point(3600,1000)
 		};
-		for ( int i = 0 ; i < slimes.length; i++) {
-			Slime slime;
-			if (i% 2 == 0) 
-				slime = new Slime(map, true);
-			else 
-				slime = new Slime(map, false);
-			slime.setPosition(slimes[i].getX(), slimes[i].getY());
-			enemies.add(slime);
-		}   
+		for ( int i = 0 ; i < slimes.length ; i++) {
+			Enemy enemy;
+			if (i% 2 == 0) {
+				enemy = new Slime(map, true); 
+				enemy.setPosition(slimes[i].getX(), slimes[i].getY());
+			}
+			else {
+				enemy = new Slime(map, false); 
+				enemy.setPosition(slimes[i].getX(), slimes[i].getY());
+			}
+			enemies.add(enemy);
+		}  
+		for ( int i = 0 ; i < pets.length ; i++) {
+			Enemy enemy;
+			if (i% 2 == 0) {
+				enemy = new Pet(map, false); 
+				enemy.setPosition(pets[i].getX(), pets[i].getY());
+			}
+			else {
+				enemy = new Bird(map, false); 
+				enemy.setPosition(pets[i].getX(), pets[i].getY());
+			}
+			enemies.add(enemy);
+		} 
 		for (int i = 0; i < water.length; i++) {
 			Water w = new Water(map);
-			w.setPosition(water[i].getX() + 51, water[i].getY() + 51);
+			w.setPosition(water[i].getX() +51, water[i].getY() + 51);
 			enemies.add(w);
 		}
+	}
+	
+	private void respawn(){
+		// chekc respawn points
+		for (int i = 0; i < checkPoints.size(); i++){
+			if (ninja.getLocation().getX() >= checkPoints.get(i).getLocation().getX() -100 && 
+				ninja.getLocation().getX() <= checkPoints.get(i).getLocation().getX() +100 && 
+				ninja.getLocation().getY() >= checkPoints.get(i).getLocation().getY() -100 && 
+				ninja.getLocation().getY() <= checkPoints.get(i).getLocation().getY() +100 &&
+				!checkPoints.get(i).isChecked())
+				checkPoints.get(i).setChecked(); 
+		} 
+		// Update chekpoint
+		for( int i = 0; i < checkPoints.size(); i++){
+			if (checkPoints.get(i).isChecked()) 
+				spawnPoint = new Point(
+						(int)checkPoints.get(i).getLocation().getX(),
+						(int)checkPoints.get(i).getLocation().getY() - 50
+				);
+		}
 		
-		System.out.println(""+ Crypt.randomString(15));
-		HUD.Coin1 = HUD.Coin2 = HUD.Coin3 = HUD.Coin4 = HUD.Coin5 = HUD.Coin6 = true;
+		// Respawn player
+		if (ninja.getHealth() == 0){
+			ninja = new Ninja ( map, male);
+			ninja.setPosition(spawnPoint);  
+			int time[] = hud.getTime();
+			hud = new HUD(ninja); 
+			hud.setTime(time[0], time[1]);
+		}
 	}
 	
 	
@@ -151,7 +220,7 @@ public class Graveyard_01 extends GameState{
 			ninja.setSliding(true); 
 		
 		// Jump Stuf
-		if ( key == KeyEvent.VK_SPACE ) 
+		if ( key == KeyEvent.VK_SPACE || key == KeyEvent.VK_UP) 
 			ninja.setJumping(true);
 		if ( key == KeyEvent.VK_SHIFT )
 			ninja.setGliding(true);
@@ -209,10 +278,12 @@ public class Graveyard_01 extends GameState{
 					continue;
 				}
 			}
-			// Next map if (ninja.getX() == 23910 && ninja.getY() == 720)
-//			
-			if ((ninja.getX() <= 23950 && ninja.getX() >= 23850) && ninja.getY() == 720)
-				gameStateManager.setState(GameStateManager.STORY);
+			// Next map if (ninja.getX() == 23910 && ninja.getY() == 720) 
+			if ((ninja.getX() <= 11128 && ninja.getX() >= 11015) && ninja.getY() == 2220)
+				gameStateManager.setState(GameStateManager.MENU);
+			for (int i = 0; i < checkPoints.size(); i++)
+				checkPoints.get(i).update();
+			respawn();
 		} 
 	}
 
@@ -223,9 +294,13 @@ public class Graveyard_01 extends GameState{
 //		graphics.setColor( Color.getHSBColor(1, 30, 1));
 //		graphics.fillRect(0, (int) (GamePanel.HEIGHT * 0.90), GamePanel.WIDTH, (int)(GamePanel.HEIGHT * 0.10));
 		
-		// Draw map and player
+		// Draw map 
 		map.draw(graphics); 
-		teleport.draw(graphics);
+		// Draw the teleport and chekcpoint behind the player
+		teleport.draw(graphics); 
+		for (int i = 0; i < checkPoints.size(); i++)
+			checkPoints.get(i).draw(graphics);
+		// Draw player
 		ninja.draw(graphics);
 		
 		// Draw hud and enemies

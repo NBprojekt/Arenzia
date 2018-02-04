@@ -122,10 +122,10 @@ public class Desert_01 extends GameState{
 	Point [] pets = new Point[]{  
 		new Point(17400, 1200), new Point(17600, 1200),
 		new Point(11100, 1000), new Point(14300, 1000),
-		new Point(23100, 1300), new Point(14300, 1000),
+		new Point(14500, 1000), new Point(23100, 1300), 
 		new Point(17465, 1210), new Point(14470, 970),
 		new Point(23484, 1270)
-	};
+	}; 
 	Point [] spikes = new Point[]{ 
 		new Point(10400, 1100), new Point(900, 700),
 		new Point(12100, 900), new Point(12200, 900),
@@ -134,15 +134,27 @@ public class Desert_01 extends GameState{
 	for ( int i = 0 ; i < slimes.length ; i++) {
 		Enemy enemy;
 		if (i% 2 == 0) {
-			enemy = new Bird(map, true); 
+			enemy = new Slime(map, true); 
 			enemy.setPosition(slimes[i].getX(), slimes[i].getY());
 		}
 		else {
-			enemy = new Bird(map, false); 
+			enemy = new Slime(map, false); 
 			enemy.setPosition(slimes[i].getX(), slimes[i].getY());
 		}
 		enemies.add(enemy);
-	}   
+	}  
+	for ( int i = 0 ; i < pets.length ; i++) {
+		Enemy enemy;
+		if (i% 2 == 0) {
+			enemy = new Pet(map, false); 
+			enemy.setPosition(pets[i].getX(), pets[i].getY());
+		}
+		else {
+			enemy = new Bird(map, false); 
+			enemy.setPosition(pets[i].getX(), pets[i].getY());
+		}
+		enemies.add(enemy);
+	} 
 	for (int i = 0; i < spikes.length; i++) {
 		Spike spike = new Spike(map);
 		spike.setPosition(spikes[i].getX() + 50, spikes[i].getY() + 43);

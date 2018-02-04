@@ -175,7 +175,7 @@ public class Game {
 	public static void drawVerison ( Graphics2D graphics ){
 		graphics.setFont(version);
 		graphics.setColor(Color.DARK_GRAY);
-		graphics.drawString("version 0.2.0", 13, GamePanel.HEIGHT -20); 
+		graphics.drawString("version 1-0-0", 13, GamePanel.HEIGHT -20); 
 		
 		// And also draw the current fps 
 		graphics.drawString("FPS : " + GamePanel.getFPS(), 13, GamePanel.HEIGHT -35); 

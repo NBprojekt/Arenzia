@@ -112,10 +112,11 @@ public class Menu extends GameState {
 				break;
 			// Level select
 			case 1 : 
-				gameStateManager.setState(GameStateManager.LEVELSELECT);  
+//				gameStateManager.setState(GameStateManager.LEVELSELECT); 
+				break;
 			// Help
 			case 2 : 
-				gameStateManager.setState(GameStateManager.HELP); 
+//				gameStateManager.setState(GameStateManager.HELP); 
 				break; 
 			// by by
 			case 3 :

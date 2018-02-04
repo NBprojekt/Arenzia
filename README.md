@@ -15,8 +15,8 @@
 
 Welcome ! 
 
-**Arenzia** is a fast, free and fun open source jump and run game. 
-Build out of scratch and written in Java. Available on every OS and created for every age group.
+**Arenzia** is a fast, free, and fun open source jump and run game.
+Build out of scratch and written in Java. Available on every OS and for every age group.
 
 Grab the source and join in the fun! 
 

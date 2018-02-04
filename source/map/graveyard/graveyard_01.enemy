@@ -1,0 +1,25 @@
+Point [] slimes = new Point []{
+		new Point(1600,300), new Point(6500,600),
+		new Point(7800,500), new Point(14100,500),
+		new Point(10700,400), new Point(14000,1900),
+		new Point(13000,1900), new Point(10100,4200),
+		new Point(2600,3100), new Point(17800,4000)
+};
+Point [] pets = new Point[]{  
+		new Point(7110, 720),  new Point(9900, 2400), 
+		new Point(15171, 1020),
+		new Point(12721, 1920), new Point(11865, 1920),
+		new Point(5128, 920)
+	}; 
+Point [] water = new Point []{
+		new Point(3500,1000), new Point(3700,1000),
+		new Point(7900,600), new Point(8000,600),
+		new Point(8100,600), new Point(8200,600),
+		new Point(10300,2500), new Point(10200,2500),
+		new Point(10100,2500), new Point(4400,2500),
+		new Point(4500,2500), new Point(4600,2500),
+		new Point(4700,2500), new Point(6900,4500),
+		new Point(7000,4500), new Point(7100,4500),
+		new Point(15400,4200), new Point(15500,4200),
+		new Point(15600,4200), new Point(3600,1000)
+};
