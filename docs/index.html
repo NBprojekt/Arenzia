@@ -2,31 +2,28 @@
 <html lang="en">
 
   <head>
-
+    <!-- Metatags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="Arenzia is a 2d Jump n' Run arcade game written in Java (It works on ever OS)">
-    <meta name="author" content="NBprojekt, Norbert Bartko">
+    <meta name="description" content="Arenzia is a fast, free and fun open source jump and run game. Build out of scratch and written in Java. Available on every OS and created for every age group.">
+    <meta name="author" content="NBprojekt, Norbert Bartko"> 
+    <title> Arenzia - The most awesome Jump n run </title> 
 
-    <title>Arenzia - The most awesome Jump n run</title>
-
-    <!-- Bootstrap core CSS -->
-    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Custom fonts for this template -->
+    <!-- CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">    
+    <link href="vendor/magnific-popup/magnific-popup.css" rel="stylesheet"> 
+    <link href="css/creative.min.css" rel="stylesheet">   
+    
+    <!-- Fonts -->
     <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
-
-    <!-- Plugin CSS -->
-    <link href="vendor/magnific-popup/magnific-popup.css" rel="stylesheet">
-
-    <!-- Custom styles for this template -->
-    <link href="css/creative.min.css" rel="stylesheet"> 
+ 
+    <!-- JavaScript -->
+    <script src="archetectureDetection.js"></script>
   </head>
 
-  <body id="page-top">
-
+  <body id="page-top"> 
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
       <div class="container">
@@ -103,78 +100,84 @@
         </div>
       </div>
       <div class="container">
-        <div class="row">
-            <!-- _______________________________________ end of Download ________________________-->
-          <div class="col-lg-3 col-md-6 text-center">
+          <style> a:hover{text-decoration: lightgray none; }</style>
+        <div class="row"> 
+          <div class="col-lg-3 col-md-6 text-center">   <!-- Windows -->
             <div class="service-box mt-4 mx-auto">
-              <i class="fa fa-4x fa-windows text-primary mb-3 sr-icons"></i>
-              <h3 class="mb-3">Windows</h3>
-	      <table width="100%">
-		<tr>
-                    <!--
-                  <td><a class="text-muted mb-0"  href="https://github.com/NBprojekt/Arenzia">32 bit</a></td>
-		  <td><a class="text-muted mb-0"  href="https://github.com/NBprojekt/Arenzia">64 bit</a></td>
-                    -->
-                    <td rowspan="2"><a class="text-muted mb-0"  href="#download">Not available yet</a></td> 
-		</tr>
-	      </table>
+              <script>
+                document.write(( is_32bits_architecture() ? 
+                  "<a class='text-muted mb-0' href='download/windows/x32.exe' download='Arenzia.jar'>"+"\
+                  <i class='fa fa-4x fa-windows text-primary mb-3 sr-icons'></i> </a>"+"\
+                  <a class='text-muted mb-0' href='download/windows/x32.jar'  download='Arenzia.jar'><h3 class='mb-4'>Windows (32 bit)</h3></a>"
+                  : 
+                  "<a class='text-muted mb-0' href='download/windows/x64.exe' download='Arenzia.jar'>"+"\
+                  <i class='fa fa-4x fa-windows text-primary mb-3 sr-icons'></i> </a>"+"\
+                  <a class='text-muted mb-0' href='download/windows/x64.jar'  download='Arenzia.jar'><h3 class='mb-4'>Windows (64 bit)</h3></a>"));
+               </script> 
             </div>
           </div>
-            <div class="col-lg-3 col-md-6 text-center">
+          <div class="col-lg-3 col-md-6 text-center">   <!-- Linux -->
             <div class="service-box mt-4 mx-auto">
-              <i class="fa fa-4x fa-linux text-primary mb-3 sr-icons"></i>
-              <h3 class="mb-3">Linux</h3>
-	      <table width="100%">
-		<tr>
-                    <!--
-                  <td><a class="text-muted mb-0"  href="https://github.com/NBprojekt/Arenzia">32 bit</a></td>
-		  <td><a class="text-muted mb-0"  href="https://github.com/NBprojekt/Arenzia">64 bit</a></td>
-                    -->
-                    <td rowspan="2"><a class="text-muted mb-0"  href="#download">Not available yet</a></td> 
-		</tr>
-	      </table>
+              <script>
+                document.write(( is_32bits_architecture() ? 
+                  "<a class='text-muted mb-0' href='download/linux/x32.exe' download='Arenzia.jar'>"+"\
+                  <i class='fa fa-4x fa-linux text-primary mb-3 sr-icons'></i> </a>"+"\
+                  <a class='text-muted mb-0' href='download/linux/x32.jar'  download='Arenzia.jar'><h3 class='mb-4'>Linux (32 bit)</h3></a>"
+                  : 
+                  "<a class='text-muted mb-0' href='download/linux/x64.exe' download='Arenzia.jar'>"+"\
+                  <i class='fa fa-4x fa-linux text-primary mb-3 sr-icons'></i> </a>"+"\
+                  <a class='text-muted mb-0' href='download/linux/x64.jar'  download='Arenzia.jar'><h3 class='mb-4'>Linux (64 bit)</h3></a>"));
+               </script> 
             </div>
           </div>
-            <div class="col-lg-3 col-md-6 text-center">
+          <div class="col-lg-3 col-md-6 text-center">   <!-- Apple -->
             <div class="service-box mt-4 mx-auto">
               <i class="fa fa-4x fa-apple text-primary mb-3 sr-icons"></i>
               <h3 class="mb-3">iMac</h3>
 	      <table width="100%">
-		<tr>
-                    <!--
-                  <td><a class="text-muted mb-0"  href="https://github.com/NBprojekt/Arenzia">32 bit</a></td>
-		  <td><a class="text-muted mb-0"  href="https://github.com/NBprojekt/Arenzia">64 bit</a></td>
-                    -->
-                    <td rowspan="2"><a class="text-muted mb-0"  href="#download">Not available yet</a></td> 
+		<tr> 
+                    <td rowspan="2">Not available yet</td> 
 		</tr>
 	      </table>
             </div>
           </div>
-            <div class="col-lg-3 col-md-6 text-center">
+          <div class="col-lg-3 col-md-6 text-center">   <!-- Android -->
             <div class="service-box mt-4 mx-auto">
               <i class="fa fa-4x fa-android text-primary mb-3 sr-icons"></i>
               <h3 class="mb-3">Android</h3>
 	      <table width="100%">
 		<tr>
-                    <td rowspan="2"><a class="text-muted mb-0"  href="#download">Not available yet</a></td> 
+                    <td rowspan="2">Not available yet</td> 
 		</tr>
 	      </table>
             </div>
+          </div> 
+        </div>
+      </div><br>
+      <div class="container">   <!-- All downloads -->
+        <div class="row">
+          <div class="col-lg-12 text-center">
+            <p class="section-heading">
+                If the architecture detection failed click 
+                <strong><a href=""> here </a></strong> for all downloads.
+            </p> 
           </div>
-            <!-- _______________________________________ end of Download ________________________-->
         </div>
       </div>
     </section>
-
+    
     <section class="p-0" id="screenshots">
       <div class="container-fluid p-0">
         <div class="row no-gutters popup-gallery">  
           <!-- pic 1 -->  
           <div class="col-lg-4 col-sm-6">
             <a class="portfolio-box" href="img/portfolio/fullsize/1.jpg">
-              <img class="img-fluid" src="img/portfolio/thumbnails/1.jpg" alt="">
+              <img class="img-fluid" src="img/portfolio/thumbnails/1.jpg" alt="Arenzia gameplay on a snow map">
               <div class="portfolio-box-caption">
                 <div class="portfolio-box-caption-content"> 
+                  <div class="project-category text-faded">
+                    Click for more
+                  </div>
                   <div class="project-name">
                     Snow
                   </div>
@@ -186,9 +189,12 @@
           <!-- pic 2 -->  
           <div class="col-lg-4 col-sm-6">
             <a class="portfolio-box" href="img/portfolio/fullsize/2.jpg">
-              <img class="img-fluid" src="img/portfolio/thumbnails/2.jpg" alt="">
+              <img class="img-fluid" src="img/portfolio/thumbnails/2.jpg" alt="Arenzia menue">
               <div class="portfolio-box-caption">
                 <div class="portfolio-box-caption-content"> 
+                  <div class="project-category text-faded">
+                    Click for more
+                  </div>
                   <div class="project-name">
                     Menue
                   </div>
@@ -200,9 +206,12 @@
           <!-- pic 3 -->  
           <div class="col-lg-4 col-sm-6">
             <a class="portfolio-box" href="img/portfolio/fullsize/3.jpg">
-              <img class="img-fluid" src="img/portfolio/thumbnails/3.jpg" alt="">
+              <img class="img-fluid" src="img/portfolio/thumbnails/3.jpg" alt="Arenzia gameplay on a forest map">
               <div class="portfolio-box-caption">
                 <div class="portfolio-box-caption-content"> 
+                  <div class="project-category text-faded">
+                    Click for more
+                  </div>
                   <div class="project-name">
                     Forest
                   </div>
@@ -214,9 +223,12 @@
           <!-- pic 4 -->  
           <div class="col-lg-4 col-sm-6">
             <a class="portfolio-box" href="img/portfolio/fullsize/4.jpg">
-              <img class="img-fluid" src="img/portfolio/thumbnails/4.jpg" alt="">
+              <img class="img-fluid" src="img/portfolio/thumbnails/4.jpg" alt="Arenzia gameplay on a desert map">
               <div class="portfolio-box-caption">
                 <div class="portfolio-box-caption-content"> 
+                  <div class="project-category text-faded">
+                    Click for more
+                  </div>
                   <div class="project-name">
                     Desert
                   </div>
@@ -231,6 +243,9 @@
               <img class="img-fluid" src="img/portfolio/thumbnails/5.jpg" alt="">
               <div class="portfolio-box-caption">
                 <div class="portfolio-box-caption-content"> 
+                  <div class="project-category text-faded">
+                    Click for more
+                  </div>
                   <div class="project-name">
                     Help
                   </div>
@@ -242,9 +257,12 @@
           <!-- pic 6 -->  
           <div class="col-lg-4 col-sm-6">
             <a class="portfolio-box" href="img/portfolio/fullsize/6.jpg">
-              <img class="img-fluid" src="img/portfolio/thumbnails/6.jpg" alt="">
+              <img class="img-fluid" src="img/portfolio/thumbnails/6.jpg" alt="Arenzia gameplay on a graveyard map">
               <div class="portfolio-box-caption">
                 <div class="portfolio-box-caption-content"> 
+                  <div class="project-category text-faded">
+                    Click for more
+                  </div>
                   <div class="project-name">
                     Graveyard
                   </div>
@@ -262,7 +280,8 @@
       <div class="container text-center">
         <h2 class="section-heading">You like what you see?</h2>
         <h5 class="section-heading">put a dollar in our coffe pot</h5><br>
-        <a class="btn btn-light btn-xl sr-button" href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=EFJ4MC62BQ29N">
+        <a class="btn btn-light btn-xl sr-button" 
+           href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=EFJ4MC62BQ29N">
             Donate now!</a>
       </div>
     </section>
@@ -272,44 +291,41 @@
         <div class="row">
           <div class="col-lg-8 mx-auto text-center">
             <h2 class="section-heading">Found a bug? Explosion?</h2> 
-            <h4 class="section-heading">(hat would be cool)</h4>
+            <h4 class="section-heading">(that would be cool)</h4>
             <hr class="my-4">
             <p class="mb-4">
                 Search for your problem in the <a href="https://github.com/NBprojekt/Arenzia/issues?q=is%3Aissue+is%3Aclosed"> 
                 issue section</a> before opening a new ticket. It might be already answered and save us time.<br>
-                Also your can leave a <a href="https://github.com/NBprojekt/Arenzia/stargazers">star</a> or just share if with your friends.
+                Also your can leave a <a href="https://github.com/NBprojekt/Arenzia/stargazers">star</a> 
+                or just share if with your friends.
             </p>
           </div>
-        </div>
-          <!----------------
+        </div> 
         <div class="row">
           <div class="col-lg-4 ml-auto text-center">
-            <i class="fa fa-phone fa-3x mb-3 sr-contact"></i>
-            <p>123-456-6789</p>
-          </div>
-          <div class="col-lg-4 mr-auto text-center">
-            <i class="fa fa-envelope-o fa-3x mb-3 sr-contact"></i>
+            <i class="fa fa-telegram fa-3x mb-3 sr-contact"></i>
             <p>
-              <a href="mailto:your-email@your-domain.com">feedback@startbootstrap.com</a>
+                <a class="text-muted mb-0" href=""> @Arenzia </a>
+            </p>
+          </div> 
+          <div class="col-lg-4 mr-auto text-center">
+            <i class="fa fa-github fa-3x mb-3 sr-contact"></i>
+            <p>
+              <a class="text-muted mb-0" href="https://github.com/nbprojekt/Arenzia">NBprojekt / Arenzia</a>
             </p>
           </div>
-        </div>
-          --------------------------->
+        </div> 
       </div>
-    </section>
-
-    <!-- Bootstrap core JavaScript -->
+    </section>        
+    <!-- JavaScript -->
     <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-    <!-- Plugin JavaScript -->
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script> 
     <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
     <script src="vendor/scrollreveal/scrollreveal.min.js"></script>
-    <script src="vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
-
-    <!-- Custom scripts for this template -->
+    <script src="vendor/magnific-popup/jquery.magnific-popup.min.js"></script> 
     <script src="js/creative.min.js"></script>
-
-  </body>
-
+  </body> 
 </html>
+
+
+    
